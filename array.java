@@ -6,12 +6,41 @@
     3.Dutch national flag algorithm  Tc-O(N) Sc-O(1)
 
 
-import java.util.Scanner;
-public class array {
-    public static void main(String args[])
+class Solution
+{
+    static void swap(int a,int b)
     {
-        Scanner sc=new Scanner(System.in);
-        int a[]={0,1,1,2,0,1,2};
+        int temp;
+        temp=a;
+        a=b;
+        b=temp;
+    }
+    public static void sort012(int a[], int n)
+    {
+        int low=0,mid=0,high=n-1;
+        while(mid<=high)
+        {
+            int temp;
+            if(a[mid]==0)
+            {
+                temp=a[low];
+                a[low]=a[mid];
+                a[mid]=temp;
+                mid++;
+                low++;
+            }
+            else if(a[mid]==1)
+            {
+                mid++;
+            }
+            else
+            {
+                temp=a[mid];
+                a[mid]=a[high];
+                a[high]=temp;
+                high--;
+            }
+        }
         
     }
 }
