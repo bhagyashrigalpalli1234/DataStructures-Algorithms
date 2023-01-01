@@ -45,16 +45,28 @@ class Solution
     }
 }
 
-//Transpose an array
-1 2 3
-4 5 6
-7 8 9
+
+1.reverse string
+class Reverse
+{
+    // Complete the function
+    // str: input string
+    public static String reverseWord(String str)
+    {
+        
+        
+        String nstr="";
+        char ch;
+        
+     
+        
+      for (int i=0; i<str.length(); i++)
+      {
+        ch= str.charAt(i); //extracts each character
+        nstr= ch+nstr; //adds each character in front of the existing string
+      }
+      return nstr;
+    }
     
-1 4 7
-2 5 8
-3 6 9
-
-
-
-//rotate array
+}
 
