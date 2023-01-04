@@ -96,4 +96,37 @@ class Solution
     }
 }
 
+
+//rotate array --setps-->
+arr     1 2 3 4 5 6 7
+index   0 1 2 3 4 5 6
+    suppose k=3
+    1. reverse arr(0,n-1) //7 6 5 4 3 2 1
+    2.reverse arr(0,k-1)  //5 6 7 4 3 2 1
+    3.reverse arr(k,n-1)  //5 6 7 1 2 3 4
+
+
+
+
+class Solution {
+    
+    public void rotate(int[] nums, int k) {
+        int n=nums.length;
+        k%=n;
+        reverse(nums,0,n-1);
+        reverse(nums,0,k-1);
+        reverse(nums,k,n-1);
+
+    }
+    void reverse(int[] nums,int start,int end)
+    {
+        
+        for(int i=start,j=end;i<j;i++,j--)
+        {
+            int temp=nums[i];
+            nums[i]=nums[j];
+            nums[j]=temp;
+        }
+    }
+}
     
