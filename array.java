@@ -129,4 +129,10 @@ class Solution {
         }
     }
 }
+
+
+https://www.codingninjas.com/codestudio/problems/find-unique_625159
+step 1- 0(n^2)  //iterate over array
+step 2- 0(N log N) //sort the array,and compare
+step3-   0(N)      //use x-or operator   a^a=0 , a^1=1
     
