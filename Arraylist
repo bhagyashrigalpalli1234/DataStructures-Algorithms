@@ -1,0 +1,207 @@
+import java.util.ArrayList;
+import java.util.Collections;
+public class arraylists {
+    public static int ContainerWater(ArrayList<Integer> list)
+    {
+        //method1
+        /*
+        int maxwater=0;  //for 1 height water it will be 0
+        for(int i=0;i<list.size();i++)
+        {
+            for(int j=i+1;j<list.size();i++)
+            {
+                int height=Math.min(list.get(i),list.get(j));
+                int width=j-i;
+                int area=height*width;
+                maxwater=Math.max(maxwater,area);
+            }
+        }
+        return maxwater;*/
+        //method-2 using two pointer approach
+        int maxwater=0;
+        int lp=0;
+        int rp=list.size()-1;
+        while(lp<rp)
+        {
+            //calculate area
+            int width=Math.min(list.get(lp),list.get(rp));
+            int height=rp-lp;
+            int currmax=width*height;
+            maxwater=Math.max(currmax,maxwater);
+            if(list.get(lp)<list.get(rp))
+            {
+                lp++;
+            }
+            else{
+                rp--;
+            }
+        }
+        return maxwater;
+    }
+
+     static boolean targetSum(ArrayList<Integer> list,int target)
+    {
+        //method 1 T.C=O(n^2)
+        /*for(int i=0;i<list.size();i++)
+        {
+            for(int j=i+1;j<list.size();i++)
+            {
+                if(list.get(i)+list.get(j)==target)
+                    System.out.println("pair found "+list.get(i)+"  "+list.get(j));
+            }
+        }*/
+        //method 2  T.C=O(n) two pointer approach
+        int lp=0;
+        int rp=list.size()-1;
+        while(lp!=rp)
+        {
+            if(list.get(lp)+list.get(rp)==target)
+                return true;
+            else if(list.get(lp)+list.get(rp)<target)
+                lp++;
+            else
+                rp--;
+        }
+        return false;
+
+    }
+
+    static boolean pairSum2(ArrayList<Integer> list,int target)
+    {
+        //find where is the breaking point index
+        int breakingPoint=-1;
+        for(int i=0;i<list.size();i++)
+        {
+            if(list.get(i)>list.get(i+1))
+            {
+                breakingPoint=i;
+                break;
+            }
+        }
+        int lp=breakingPoint+1;
+        int rp=breakingPoint;
+        while(lp!=rp)
+        {
+            if(list.get(lp)+list.get(rp)==target)
+            {
+                return true;
+            }
+            else if(list.get(lp)+list.get(rp)<target)
+                lp=(lp+1)%list.size();
+            else
+                rp=(list.size()+rp-1)%list.size();
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+//        ArrayList<Integer> l=new ArrayList<>();
+//        l.add(1);
+//        l.add(2);
+//        l.add(100);
+//        l.add(3);
+//        l.add(0);
+//        l.add(-2);
+//        System.out.println(l);
+//        System.out.println(l.get(1));
+//        System.out.println(l.remove(1));
+//
+//        l.set(2,100);
+//        System.out.println(l);
+//        System.out.println(l.contains(200));
+//        System.out.println(l.size());
+//        for(int i=0;i<l.size();i++)
+//        {
+//            System.out.println(l.get(i));
+//        }
+//        System.out.println(l);
+        //print reverse
+        /*for(int i=l.size()-1;i>=0;i--)
+        {
+            System.out.println(l.get(i));
+        }*/
+        //find max
+//        int max=Integer.MIN_VALUE;
+//        for(int i=0;i<l.size();i++)
+//        {
+//            if(max<l.get(i))
+//            {
+//                max=l.get(i);
+//            }
+//        }
+//        System.out.println(max);
+        //swap numbers
+        /*int idx1=0;
+        int idx2=2;
+        int temp;
+        temp=l.get(idx1);
+        l.set(idx1,l.get(idx2));
+        l.set(idx2,temp);
+        System.out.println(l);*/
+        //starting in ascending order
+//        Collections.sort(l);
+//        System.out.println(l);
+        //sort in reverse oredr
+//        Collections.sort(l,Collections.reverseOrder());
+//        System.out.println(l);
+        //multidimentional arraylist
+//        ArrayList<ArrayList<Integer>> mainlist=new ArrayList<>();
+//        ArrayList<Integer> list=new ArrayList<>();
+//        list.add(1);
+//        list.add(2);
+//        mainlist.add(list);
+//
+//        ArrayList<Integer> list2=new ArrayList<>();
+//        list2.add(100);
+//        list2.add(300);
+//        list2.add(400);
+//        mainlist.add(list2);
+//
+//        for(int i=0;i<mainlist.size();i++)
+//        {
+//            ArrayList<Integer> currlist=mainlist.get(i);
+//            for(int j=0;j<currlist.size();j++)
+//            {
+//                System.out.print(currlist.get(j)+" ");
+//            }
+//        }
+//        System.out.println(mainlist);
+        //container with most water time complexity-o(n*n)
+        //Brut Force
+        ArrayList<Integer> list=new ArrayList<>();
+//        list.add(1);
+//        list.add(8);
+//        list.add(6);
+//        list.add(2);
+//        list.add(5);
+//        list.add(4);
+//        list.add(8);
+//        list.add(3);
+//        System.out.println(list);
+//        System.out.println(ContainerWater(list));
+//        list.add(1);
+//        list.add(2);
+//        list.add(3);
+//        list.add(4);
+//        list.add(5);
+//        list.add(6);
+//        int target=5;
+//        System.out.println(targetSum(list,target));
+        //pair sum two problem list with sorted and rotated
+        list.add(11);
+        list.add(15);
+        list.add(6);
+        list.add(8);
+        list.add(9);
+        list.add(10);
+        int target=16;
+        System.out.println(pairSum2(list,target));
+
+
+
+
+
+
+    }
+
+}
